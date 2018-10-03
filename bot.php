@@ -9,8 +9,8 @@ Modified @ Farzain - zFz
 require_once('./line_class.php');
 require_once('./unirest-php-master/src/Unirest.php');
 
-$channelAccessToken = 'YOUR-CHANNEL-ACCESS-TOKEN'; //sesuaikan 
-$channelSecret = 'YOUR-CHANNEL-SECRET-CODE';//sesuaikan
+$channelAccessToken = '6mSIl7Ie8LUcUYhev0MO8cormy+lQakbeqgXM6g8v7W5DimtCUoTP/JUMEFTE9FyXLd7Zh70PkxzE35d0JIkn195VULoJIKvyUXxyMwqVkq6a1ri6Y5cjhgLMS1rLAN9oEmXiReBqcmV4joJHGPauQdB04t89/1O/w1cDnyilFU='; //sesuaikan 
+$channelSecret = 'de130ff97245f25d7c4a2b877cc3d69c';//sesuaikan
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 
@@ -43,12 +43,12 @@ function cuaca($keyword) {
     $response = Unirest\Request::get("$uri");
 
     $json = json_decode($response->raw_body, true);
-    $result = "Halo Kak ^_^ Ini ada Ramalan Cuaca Untuk Daerah ";
+    $result = "Ini ada Ramalan Cuaca Untuk Daerah ";
 	$result .= $json['name'];
 	$result .= " Dan Sekitarnya";
 	$result .= "\n\nCuaca : ";
 	$result .= $json['weather']['0']['main'];
-	$result .= "\nDeskripsi : ";
+	$result .= "\nKeterangan : ";
 	$result .= $json['weather']['0']['description'];
     return $result;
 }
@@ -62,7 +62,7 @@ function cuaca($keyword) {
 
 //show menu, saat join dan command /menu
 if ($type == 'join' || $command == '/menu') {
-    $text = "Halo Kak ^_^\nAku Bot Prediksi Cuaca, Kamu bisa mengetahui prediksi cuaca di daerah kamu sesuai dengan sumber BMKG";
+    $text = "Terima Kasih telah menambahkan Line Bot Prediksi Cuaca sebagai teman. Kamu bisa mengetahui prediksi cuaca di daerah kamu sesuai dengan sumber BMKG";
     $balas = array(
         'replyToken' => $replyToken,
         'messages' => array(
@@ -97,7 +97,7 @@ if($message['type']=='text') {
 							'messages' => array(
 								array(
 										'type' => 'text',									
-										'text' => 'Makasih Kak Stikernya ^_^'										
+										'text' => 'Tidak diketahui'										
 									
 									)
 							)
